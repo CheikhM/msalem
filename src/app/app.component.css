@@ -102,5 +102,27 @@ mat-footer-row mat-footer-cell{
 .mat-elevation-z8{
   margin-bottom: 13px;;
 }
+
+
 .second-container{
+    margin-top: 10px ;
+    
+}
+.second-container button{
+    height: 45px;
+    width: 110px;
+}
+.second-container .btn-tous{
+    margin-right: 580px ;
+    border: 2px solid darkblue;
+    
+}
+
+.second-container .btn-doublonne{
+    margin-left: 20px ;
+    
+}
+.second-container  .critere{
+    height: 10px;
+    width: 400px;
 }
