@@ -123,6 +123,8 @@ mat-footer-row mat-footer-cell{
     
 }
 .second-container  .critere{
-    height: 10px;
+    font-size: 15px;
     width: 400px;
+    position: relative;
+    top: 10px;
 }

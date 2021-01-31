@@ -1,3 +1,4 @@
+import { EmployeeService } from './../../service/employee.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEmployeeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:EmployeeService) { }
 
   ngOnInit(): void {
+  }
+
+  onRegisterSubmit(form){
+    // TODO: creation de l'enployee dans la base de donnee
+
   }
 
 }
