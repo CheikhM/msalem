@@ -1,9 +1,9 @@
 <mat-card class="example-card">
-  <form [formGroup]="salarieForm" (ngSubmit)="onRegisterSubmit(salarieForm)">
+  <form [formGroup]="salarieForm" (ngSubmit)="onRegisterSubmit()">
 
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Creation </mat-card-title>
+      <mat-card-title>{{ !isEditionMode ? 'Creation' : 'Modification' }} </mat-card-title>
       <mat-card-subtitle>de l'employee</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>

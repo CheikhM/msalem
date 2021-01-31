@@ -102,5 +102,11 @@ export class AppComponent {
     })
   }
 
+
+  editSalarie(salarie: Salarie) {
+    const dialogRef = this.dialog.open(CreateEmployeeComponent, {
+      data: salarie
+    });
+  }
 }
 

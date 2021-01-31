@@ -14,11 +14,13 @@ import { catchError } from 'rxjs/operators';
 export class CreateEmployeeComponent implements OnInit {
 
   salarieForm: FormGroup;
+  isEditionMode = false;
   constructor(public salarieService:EmployeeService, public dialogRef: MatDialogRef<CreateEmployeeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private toastr: ToastrService) { }
+    @Inject(MAT_DIALOG_DATA) public data: Salarie, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.initalizeForm();
+    this.getMode();
   }
 
   initalizeForm()
@@ -33,17 +35,41 @@ export class CreateEmployeeComponent implements OnInit {
     });
   }
 
-  onRegisterSubmit(form){
+  onRegisterSubmit(){
     const salarie: Salarie = this.salarieForm.getRawValue();
-    this.salarieService.store(salarie).pipe(
-      catchError(() => {
-        this.toastr.success('Un problème est survenu lors de la supression', 'Opération complète');
-        throw Error;
-      })
-    ).subscribe(res => {
-      this.toastr.success('Salarie a été crée avec success', 'Opération complète');
-      this.dialogRef.close();
-    });
+    if(this.isEditionMode) {
+      salarie.id = this.data.id;
+      this.salarieService.update(salarie).pipe(
+        catchError(() => {
+          this.toastr.success('Un problème est survenu lors de la modification', 'Opération complète');
+          throw Error;
+        })
+      ).subscribe(res => {
+        this.toastr.success('Salarie a été modifié avec success', 'Opération complète');
+        this.dialogRef.close();
+      });
+
+    } else {
+      this.salarieService.store(salarie).pipe(
+        catchError(() => {
+          this.toastr.success('Un problème est survenu lors de la création', 'Opération complète');
+          throw Error;
+        })
+      ).subscribe(res => {
+        this.toastr.success('Salarie a été crée avec success', 'Opération complète');
+        this.dialogRef.close();
+      });
+    }
+  }
+
+  /**
+   * Permet de detcter le mode: création ou modification
+   */
+  getMode() {
+    if(this.data) {
+      this.isEditionMode = true;
+      this.salarieForm.patchValue(this.data);
+    }
   }
 
 

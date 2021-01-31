@@ -59,6 +59,14 @@ export class EmployeeService {
     return this.http.delete(`${environment.API}/${id}`);
   }
 
+  /**
+   * Permet de modifier un nouveau salarié
+   * @param salarie
+   */
+  update(salarie: Salarie) {
+    return this.http.post(`${environment.API}`, salarie);
+  }
+
   filtrerParCritere(critere: string) {
     return this.http.get(`${environment.API}/critere/${critere}`)
   }
