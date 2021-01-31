@@ -5,11 +5,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreateEmployeeComponent } from './employees/create-employee/create-employee.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PopupSuppressionSalarieComponent } from './popup-suppression-salarie/popup-suppression-salarie.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateEmployeeComponent,
+    PopupSuppressionSalarieComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,8 +22,11 @@ import { CreateEmployeeComponent } from './employees/create-employee/create-empl
    ReactiveFormsModule,
   //AngularFireDatabaseModule,
   //AngularFireModule.initializeApp(environment.firebaseConfig),
-  FormsModule
+  FormsModule,
+  HttpClientModule,
+  ToastrModule.forRoot(), // ToastrModule added
   ],
+  entryComponents: [PopupSuppressionSalarieComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,14 +1,14 @@
 <mat-card class="example-card">
+  <form [formGroup]="salarieForm" (ngSubmit)="onRegisterSubmit(salarieForm)">
+
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>Creation </mat-card-title>
       <mat-card-subtitle>de l'employee</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="service.form" (ngSubmit)="onRegisterSubmit(service.form)">
            <div class="controles-container">
-             <input type="hidden" formControlName="$key">
-             <p>
+             <div>
               <mat-form-field appearance="outline">
                 <mat-label>Prenom*</mat-label>
                 <input matInput formControlName="prenom" placeholder="Prenom">
@@ -16,8 +16,8 @@
                 <mat-icon matSuffix>person</mat-icon>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
-            </p>
-            <p>
+            </div>
+            <div>
               <mat-form-field appearance="outline">
                 <mat-label>Fonction*</mat-label>
                 <input matInput formControlName="fonction" placeholder="Fonction">
@@ -25,38 +25,38 @@
                 <mat-icon matSuffix>work</mat-icon>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
-            </p>
-            <p>
+            </div>
+            <div>
               <mat-form-field appearance="outline">
                 <mat-label>Annee Experience*</mat-label>
-                <input matInput formControlName="pranneeExperiencenom" placeholder="Annee Experience">
+                <input matInput formControlName="anneesExperience" placeholder="Annee Experience" type="number">
                 <mat-error>This field is required</mat-error>
                 <mat-icon matSuffix>trending_up</mat-icon>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
-            </p>
-  
-            <p>
+            </div>
+
+            <div>
               <mat-form-field appearance="outline">
                 <mat-label>Adress*</mat-label>
-                <input matInput formControlName="adress"  placeholder="Adress">
+                <input matInput formControlName="adresse"  placeholder="Adress">
                 <mat-error>This field is required</mat-error>
                 <mat-icon matSuffix>place</mat-icon>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
-            </p>
-  
-            <p>
+            </div>
+
+            <div>
               <mat-form-field appearance="outline">
                 <mat-label>Salarie*</mat-label>
-                <input matInput formControlName="salarie"  placeholder="Salarie">
+                <input matInput formControlName="salaire"  placeholder="Salarie" type="number">
                 <mat-error>This field is required</mat-error>
                 <mat-icon matSuffix>money</mat-icon>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
-            </p>
-  
-            <p>
+            </div>
+
+            <div>
               <mat-form-field appearance="outline">
                 <mat-label>Date Nessance*</mat-label>
                 <input matInput formControlName="dateNaissance"  [matDatepicker]="picker" placeholder="Date Nessance">
@@ -66,14 +66,12 @@
                 <!-- <mat-icon matSuffix>alarm_on</mat-icon> -->
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
-            </p>
+            </div>
            </div>
-        </form>
-
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button mat-dialog-close>Anuller <mat-icon matSuffix>cancel</mat-icon></button>
-      <button mat-raised-button [disabled]="service.form.invalid">Enregistrer <mat-icon matSuffix>done</mat-icon></button>
+      <button mat-raised-button [disabled]="salarieForm.invalid" type="submit">Enregistrer <mat-icon matSuffix>done</mat-icon></button>
     </mat-card-actions>
+  </form>
   </mat-card>
-  
